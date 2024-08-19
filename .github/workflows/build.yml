@@ -33,12 +33,19 @@ jobs:
         with:
           toolchain: stable
           components: rustfmt, clippy
+          override: true
 
       - name: Install Tauri CLI
         run: cargo install tauri-cli --locked
 
       - name: Build Tauri App
         run: yarn tauri build
+
+      - name: Clean Cargo cache
+        run: cargo clean
+
+      - name: Regenerate Cargo.lock
+        run: cargo generate-lockfile
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
