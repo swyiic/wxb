@@ -34,10 +34,7 @@ jobs:
         run: rustup update stable
 
       - name: Install Tauri CLI
-        run: cargo install tauri-cli --locked
-        
-      - name: Clean Cargo build artifacts
-        run: cargo clean
+        run: cargo install tauri-cli 
         
       - name: Build Tauri App
         run: yarn tauri build
