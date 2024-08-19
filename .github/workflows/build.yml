@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ${{ matrix.platform }}
 
     strategy:
       matrix:
@@ -44,4 +44,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: tauri-build-${{ matrix.platform }}
-          path: src-tauri/target/release/bundle/
+          path: |
+            src-tauri/target/release/bundle/macos/*.app
+            src-tauri/target/release/bundle/windows/*.exe
