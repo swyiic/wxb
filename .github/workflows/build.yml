@@ -35,7 +35,10 @@ jobs:
 
       - name: Install Tauri CLI
         run: cargo install tauri-cli --locked
-
+        
+      - name: Clean Cargo build artifacts
+        run: cargo clean
+        
       - name: Build Tauri App
         run: yarn tauri build
 
