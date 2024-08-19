@@ -10,11 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.platform }}
-
-    strategy:
-      matrix:
-        platform: [macos-latest]
+    runs-on: macos-latest
 
     steps:
       - name: Checkout code
@@ -35,25 +31,14 @@ jobs:
           override: true
           components: rustfmt, clippy
 
-      - name: Update Rust toolchain
-        run: rustup update
-
       - name: Install Tauri CLI
         run: cargo install tauri-cli --locked
 
       - name: Build Tauri App
         run: yarn tauri build
 
-      - name: Clean Cargo cache
-        run: cargo clean
-
-      - name: Regenerate Cargo.lock
-        run: cargo generate-lockfile
-
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: tauri-build-${{ matrix.platform }}
-          path: |
-            src-tauri/target/release/bundle/macos/*.app
-            src-tauri/target/release/bundle/windows/*.exe
+          name: tauri-build-macos
+          path: src-tauri/target/release/bundle/macos/*.app
