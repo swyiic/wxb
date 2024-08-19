@@ -30,6 +30,8 @@ jobs:
           toolchain: stable 
           override: true
           components: rustfmt, clippy
+      - name: Update Rust toolchain
+        run: rustup update stable
 
       - name: Install Tauri CLI
         run: cargo install tauri-cli --locked
