@@ -1,0 +1,1 @@
+{"global-perms":{"identifier":"global-perms","description":"给整个应用放开常用权限","local":true,"windows":["*"],"permissions":["core:default","fs:default",{"identifier":"fs:scope","allow":[{"path":"**"}]}]}}

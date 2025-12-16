@@ -1,0 +1,36 @@
+[package]
+name = "wxb"
+version = "0.0.0"
+description = "A Tauri App"
+authors = ["you"]
+edition = "2021"
+
+# ---------- 构建依赖 ----------
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+# ---------- 核心依赖 ----------
+[dependencies]
+tauri = { version = "2", features = [] }
+
+# JSON 序列化
+serde = { version = "1", features = ["derive"] }
+# JSON 解析
+serde_json = "1"
+# SQLite 数据库
+rusqlite = { version = "0.32.1", features = ["bundled"] }
+# HTTP 请求
+reqwest = { version = "0.12.5", features = ["blocking", "json", "multipart"] }
+# 异步运行时（reqwest 需要）
+tokio = { version = "1.39.2", features = ["full"] }
+uuid = { version = "1.18.1", features = ["v4"] }
+lazy_static = "1.5.0"
+tauri-plugin-http = "2.5.4"
+tauri-utils = "2.8.0"
+dirs = "6.0.0"
+tauri-plugin-fs = "2.4.4"
+chrono = "0.4.42"
+
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-global-shortcut = "2"
+
